@@ -8,16 +8,26 @@
 </head>
 <body>
     <div id="pantalla-inicial">
-        <h1>🧠 Recuérdame</h1>
-        <button id="btn-comenzar">Comenzar</button>
+        <div class="Contenedor">   
+            <img src="logo2.png" alt="Recuérdame" class="logo2"> 
+            <p>Porque cada rostro merece ser recordado</p>
+            <button id="btn-comenzar">Comenzar</button>
+        </div>
     </div>
 
     <div id="menu-principal" style="display: none;">
-        <h2>Bienvenido 👋</h2>
-        <button id="btn-personas">👥 Personas</button>
+        <div class="contenedor">
+            <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+            <h2>Bienvenido 👋</h2>
+            <button id="btn-personas">👥 Personas</button>
+        </div>
     </div>
 
     <div id="pantalla-personas" style="display: none;">
+        <!-- Botón de volver atrás -->
+        <button class="btn-volver" onclick="volverAInicio()">← Volver</button>
+
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
         <h1>Registrar una Persona</h1>
         <form id="form-persona">
             <input type="text" id="nombre" placeholder="Nombre" required>
@@ -25,6 +35,7 @@
             <input type="text" id="foto" placeholder="URL de la Foto" required>
             <button type="submit">Guardar Persona</button>
         </form>
+
         <div id="lista-personas"></div>
     </div>
 

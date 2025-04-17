@@ -91,3 +91,9 @@ async function eliminarPersona(id) {
         console.error("❌ Error al eliminar:", error);
     }
 }
+
+// ✅ Función para volver al menú principal
+function volverAInicio() {
+    document.getElementById("pantalla-personas").style.display = "none";
+    document.getElementById("menu-principal").style.display = "block";
+}
