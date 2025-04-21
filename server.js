@@ -74,6 +74,6 @@ app.get("/", (req, res) => {
 });
 
 // ✅ Iniciar servidor escuchando en 0.0.0.0 para acceso externo
-app.listen(PORT, "192.168.0.14", () => {
-    console.log(`🔥 Servidor corriendo en http://192.168.0.14:${PORT}`);
+app.listen(PORT, "192.168.127.90", () => {
+    console.log(`🔥 Servidor corriendo en http://192.168.127.90:${PORT}`);
 });

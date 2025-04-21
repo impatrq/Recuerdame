@@ -12,7 +12,7 @@ document.getElementById("btn-personas").addEventListener("click", () => {
 // ✅ Función para cargar personas
 async function cargarPersonas() {
     try {
-        const response = await fetch("http://192.168.0.14:5000/personas"); // ✅ corregido a /personas
+        const response = await fetch("http://192.168.127.90:5000/personas"); // ✅ corregido a /personas
         const data = await response.json();
 
         const lista = document.getElementById("lista-personas");
@@ -48,7 +48,7 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     }
 
     try {
-        const respuesta = await fetch("http://192.168.0.14:5000/persona", {
+        const respuesta = await fetch("http://192.168.127.90:5000/persona", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre, relacion, foto })
@@ -74,7 +74,7 @@ async function eliminarPersona(id) {
     if (!confirm("⚠️ ¿Seguro que querés eliminar esta persona?")) return;
 
     try {
-        const respuesta = await fetch(`http://192.168.0.14:5000/persona/${id}`, {
+        const respuesta = await fetch(`http://192.168.127.90:5000/persona/${id}`, {
             method: "DELETE"
         });
 
