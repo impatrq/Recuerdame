@@ -1,0 +1,260 @@
+/* Estilos para la pantalla inicial */
+#pantalla-inicial {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupar toda la altura de la pantalla */
+    text-align: center;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center;
+    gap: 20px; /* Espacio entre elementos */
+}
+
+.logo2 {
+    width: 150px; /* Ajusta el tamaño del logo según necesites */
+   
+}
+/* Animación de entrada del contenedor */
+@keyframes fadeInInicio {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para la sección de formulario de guardar persona */
+#guardar-persona {
+    margin-bottom: 40px;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+#guardar-persona h3 {
+    font-size: 24px;
+    color: #0c91be;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+#guardar-persona input {
+    margin-bottom: 15px;
+}
+
+/* Estilos para los campos de texto */
+input[type="text"], input[type="url"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 2px solid #0c91be;
+    border-radius: 10px;
+    background-color: #222;
+    color: #0c91be;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus, input[type="url"]:focus {
+    border-color: #0c91be;
+    outline: none;
+    background-color: #1e1e1e;
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #0c91be;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: mostrarBoton 0.5s forwards;
+ 
+}
+
+button:hover {
+    background-color: #0077b3;
+    transform: translateY(-5px);
+}
+
+/* Animación de aparición para los botones */
+@keyframes mostrarBoton {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos generales */
+body {
+    background-color: black;
+    color: #0c91be;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para la lista de personas guardadas */
+#personas {
+    margin-top: 40px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+}
+
+#personas h3 {
+    font-size: 26px;
+    color: #0c91be;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para cada persona */
+.persona {
+    background: rgb(83, 83, 83);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: mostrarPersona 0.7s forwards;
+    
+}
+
+.persona img {
+    width: 80%;
+    max-width: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.persona h2 {
+    font-size: 20px;
+    color: #0c91be;
+    margin-bottom: 5px;
+}
+
+.persona p {
+    color: #999;
+    font-size: 16px;
+}
+
+.persona:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    background: rgba(83, 83, 83, 0.9);
+}
+
+/* Animación de entrada para las personas */
+@keyframes mostrarPersona {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación para los botones Comenzar y Personas */
+#inicio button {
+    animation: mostrarBoton 0.6s forwards;
+}
+
+#personas button {
+    animation: mostrarBoton 0.6s forwards;
+}
+
+/* Estilo del logo */
+.logo {
+    width: 150px;
+    max-width: 80%;
+    margin-bottom: 30px;
+    animation: aparecerLogo 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+@keyframes aparecerLogo {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#pantalla-personas {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupar toda la altura de la pantalla */
+    text-align: center;
+}
+
+#menu-pricipal {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupar toda la altura de la pantalla */
+    text-align: center;
+    gap : 20px; /* Espacio entre elementos */
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center;
+    gap: 200px; /* Espacio entre elementos */
+}
+
+.logo-fijo {
+    position: fixed;
+    top: 10px; /* 📌 Separación desde arriba */
+    right: 10px; /* 📌 Separación desde la derecha */
+    width: 50px; /* 📌 Tamaño más pequeño */
+    z-index: 1000; /* 📌 Asegura que esté encima de los demás elementos */
+}
+
+.btn-volver {
+    background-color: transparent;
+    color: #0c91be;
+    border: 2px solid #0c91be;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-volver:hover {
+    background-color: #0c91be;
+    color: black;
+    transform: scale(1.05);
+}

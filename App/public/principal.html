@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor de bienvenida -->
+    <div id="bienvenida">
+        <h1>Bienvenido, Usuario</h1>
+        <button id="comenzar-btn">Comenzar</button>
+    </div>
+
+    <!-- Contenedor con las opciones (incluido el botón "Personas") -->
+    <div id="contenido-principal" style="display:none;">
+        <h2>Bienvenido, Usuario</h2>
+        <button id="personas-btn">Personas</button>
+    </div>
+
+    <!-- Formulario para registrar persona -->
+    <div id="registro-persona" style="display:none;">
+        <h2>Registrar Persona</h2>
+        <form id="form-persona">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="relacion" placeholder="Relación" required>
+            <input type="text" id="foto" placeholder="URL de la foto" required>
+            <button type="submit">Guardar Persona</button>
+        </form>
+        <div id="mensaje-registro"></div>
+    </div>
+
+    <!-- Contenedor con la lista de personas -->
+    <div id="contenido-personas" style="display:none;">
+        <h2>Lista de Personas</h2>
+        <div id="lista-personas"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+    <script src="app.js"></script>
+</body>
+</html>

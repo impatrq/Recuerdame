@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuérdame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="pantalla-inicial">
+        <div class="Contenedor">   
+            <img src="logo2.png" alt="Recuérdame" class="logo2"> 
+            <p>Porque cada rostro merece ser recordado</p>
+            <button id="btn-comenzar">Comenzar</button>
+        </div>
+    </div>
+
+    <div id="menu-principal" style="display: none;">
+        <div class="contenedor">
+            <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+            <h2>Bienvenido 👋</h2>
+            <button id="btn-personas">👥 Personas</button>
+        </div>
+    </div>
+
+    <div id="pantalla-personas" style="display: none;">
+        <!-- Botón de volver atrás -->
+        <button class="btn-volver" onclick="volverAInicio()">← Volver</button>
+
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+        <h1>Registrar una Persona</h1>
+        <form id="form-persona">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="relacion" placeholder="Relación" required>
+            <input type="file" id="foto" placeholder="Seleccionar imagen" required>
+            <button type="submit">Guardar Persona</button>
+        </form>
+
+        <div id="lista-personas"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
