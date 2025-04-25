@@ -1,4 +1,19 @@
-/* Estilos para la pantalla inicial */
+/* Fuente para todo el texto */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente canchera */
+    font-weight: bold; /* Poner todo en negrita */
+}
+
+/* Estilos para el texto de Bienvenido y Registrar Personas */
+#bienvenido,
+#registrar-personas {
+    color: #0c91be; /* Color del texto 'recuerdame' */
+    font-family: 'Poppins', sans-serif; /* Fuente más moderna */
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Estilo para la pantalla inicial */
 #pantalla-inicial {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -16,8 +31,8 @@
 
 .logo2 {
     width: 150px; /* Ajusta el tamaño del logo según necesites */
-   
 }
+
 /* Animación de entrada del contenedor */
 @keyframes fadeInInicio {
     from {
@@ -33,20 +48,20 @@
 /* Estilos para la sección de formulario de guardar persona */
 #guardar-persona {
     margin-bottom: 40px;
-    background-color: #1a1a1a;
+    background-color: #b0fcff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgb(126, 237, 249);
     margin-bottom: 50px;
     margin-top: 30px;
 }
 
 #guardar-persona h3 {
     font-size: 24px;
+    font-weight: bold;
     color: #0c91be;
     margin-bottom: 20px;
     text-align: center;
-    
 }
 
 #guardar-persona input {
@@ -60,38 +75,42 @@ input[type="text"], input[type="url"] {
     margin: 10px 0;
     border: 2px solid #0c91be;
     border-radius: 10px;
-    background-color: #222;
-    color: #0c91be;
     font-size: 16px;
     box-sizing: border-box;
     transition: all 0.3s;
 }
 
 input[type="text"]:focus, input[type="url"]:focus {
-    border-color: #0c91be;
+    border-color: #ffffff;
     outline: none;
-    background-color: #1e1e1e;
 }
 
 /* Estilos para los botones */
 button {
-    background-color: #0c91be;
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
+    margin-top: 100px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #00000080;
+    text-shadow: none;
+    background: transparent;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: mostrarBoton 0.5s forwards;
- 
+    box-shadow: transparent;
+    border: 1px solid #3e3e3e80;
+    transition: 0.5s ease;
+    user-select: none;
 }
 
-button:hover {
-    background-color: #0077b3;
-    transform: translateY(-5px);
+#btn:hover,
+:focus {
+    color: #ffffff;
+    background: #34a1fa;
+    border: 1px solid #008cff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
+      0 0 100px #008cff;
 }
 
 /* Animación de aparición para los botones */
@@ -104,10 +123,14 @@ button:hover {
 
 /* Estilos generales */
 body {
-    background-color: black;
-    color: #0c91be;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
+    background-image: url('textura.jpg');
+    background-repeat: repeat; /* Para que se repita y cubra toda la página */
+    background-size: auto;     /* O `cover` si querés que la escale */
+    background-color: #000;    /* Color de fondo por si la imagen no carga */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-weight: bold; 
 }
 
 header {
@@ -115,16 +138,6 @@ header {
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-}
-
-/* Estilos para la lista de personas guardadas */
-#personas {
-    margin-top: 40px;
-    background-color: #333;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    margin-top: 50px;
 }
 
 #personas h3 {
@@ -136,16 +149,16 @@ header {
 
 /* Estilos para cada persona */
 .persona {
-    background: rgb(83, 83, 83);
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    transition: 0.4s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: mostrarPersona 0.7s forwards;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+    padding: 15px;
+    background-color: rgba(26, 26, 26, 0.8); /* Fondo translúcido */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: none; /* sin animación */
 }
 
 .persona img {
@@ -160,6 +173,7 @@ header {
 
 .persona h2 {
     font-size: 20px;
+    font-weight: bold;
     color: #0c91be;
     margin-bottom: 5px;
 }
@@ -169,9 +183,12 @@ header {
     font-size: 16px;
 }
 
-.persona:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    background: rgba(83, 83, 83, 0.9);
+/* Estilo para el texto de Bienvenido en la pantalla inicial */
+#pantalla-inicial h1 {
+    font-family: 'Poppins', sans-serif; /* Fuente canchera */
+    color: #0c91be; /* Color del texto 'recuerdame' */
+    font-weight: bold;
+    font-size: 36px;
 }
 
 /* Animación de entrada para las personas */
@@ -222,7 +239,7 @@ header {
     align-items: center; /* Centra verticalmente */
     height: 100vh; /* Ocupar toda la altura de la pantalla */
     text-align: center;
-    gap : 20px; /* Espacio entre elementos */
+    gap: 20px; /* Espacio entre elementos */
 }
 
 .contenedor {
@@ -241,20 +258,78 @@ header {
 }
 
 .btn-volver {
-    background-color: transparent;
-    color: #0c91be;
-    border: 2px solid #0c91be;
+    margin-top: 100px;
     padding: 10px 20px;
+    text-transform: uppercase;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #00000080;
+    text-shadow: none;
+    background: transparent;
     cursor: pointer;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    display: inline-block;
+    box-shadow: transparent;
+    border: 1px solid #3e3e3e80;
+    transition: 0.5s ease;
+    user-select: none;
 }
 
-.btn-volver:hover {
-    background-color: #0c91be;
-    color: black;
-    transform: scale(1.05);
+#btn:hover,
+:focus {
+    color: #ffffff;
+    background: #34a1fa;
+    border: 1px solid #008cff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
+      0 0 100px #008cff;
+}
+
+/* boton eliminar */
+.btn-eliminar { 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative; /* ✅ Necesario para que ::before funcione bien */
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: .3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.btn-eliminar:hover {
+    width: 140px;
+    border-radius: 50px;
+    background-color: rgb(255, 69, 69);
+}
+
+.btn-eliminar:hover .svgIcon {
+    width: 50px;
+    transform: translateY(60%);
+}
+
+.btn-eliminar::before {
+    position: absolute;
+    top: -20px;
+    content: "Eliminar";
+    color: white;
+    font-size: 2px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    transition-duration: .3s;
+    padding: 10px;
 }
