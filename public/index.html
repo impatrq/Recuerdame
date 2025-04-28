@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuérdame</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuérdame</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Pantalla inicial -->
-    <div id="pantalla-inicial">
-        <div class="contenedor1">
-            <img src="logo2.png" alt="Recuérdame" class="logo2">
-            <p></p>
-            <button class="contenedor2" id="btn-comenzar">Comenzar</button>
-        </div>
+  <!-- Pantalla inicial -->
+  <div id="pantalla-inicial">
+    <div class="contenedor1">
+      <img src="logo2.png" alt="Recuérdame" class="logo2">
+      <p></p>
+      <button class="contenedor2" id="btn-comenzar">Comenzar</button>
     </div>
+  </div>
 
-    <!-- Menú principal -->
-    <div id="menu-principal" style="display: none;">
-        <div class="contenedor">
-            <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
-            <h2>Bienvenido</h2>
-            <button id="btn-personas">Personas</button>
-        </div>
+  <!-- Menú principal -->
+  <div id="menu-principal" style="display: none;">
+    <div class="contenedor">
+      <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+      <h2>Bienvenido</h2>
+      <button id="btn-personas" style="margin: 150%;">Personas</button>
     </div>
+  </div>
 
-    <!-- Pantalla de registro de personas -->
-    <div id="pantalla-personas" style="display: none;">
-        <button class="btn-volver" onclick="volverAInicio()">← Volver</button>
-        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
-        <h1>Registrar una Persona</h1>
-        <form id="form-persona">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-            <input type="text" id="relacion" name="relacion" placeholder="Relación" required>
-            
-            <!-- Botón básico para subir archivos -->
-            <input type="file" id="foto" name="foto" accept="image/*" required>
-        
-            <button type="submit">Guardar Persona</button>
-        </form>
+  <!-- Pantalla de registro de personas -->
+  <div id="pantalla-personas" style="display: none;">
+    <button class="btn-volver" onclick="volverAInicio()">← Volver</button>
+    <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+    <h1 class="Registro">Registrar una Persona</h1>
 
-        <div id="lista-personas"></div>
-    </div>
+    <form id="form-persona">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+      <input type="text" id="relacion" name="relacion" placeholder="Relación" required>
 
-    <script src="app.js"></script>
+      <!-- Botón personalizado para subir imagen -->
+      <div class="contenedor-boton-archivo">
+        <input type="file" id="foto" name="foto" accept="image/*" required hidden>
+        <button type="button" class="button" onclick="document.getElementById('foto').click()">
+          <svg class="w-6 h-6" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+          <span class="text">Subir Foto</span>
+        </button>
+      </div>
+
+      <button type="submit">Guardar Persona</button>
+    </form>
+
+    <div id="lista-personas"></div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
