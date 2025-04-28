@@ -7,46 +7,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Pantalla inicial -->
     <div id="pantalla-inicial">
-        <div class="contenedor1">   
-            <img src="logo2.png" alt="Recuérdame" class="logo2"> 
+        <div class="contenedor1">
+            <img src="logo2.png" alt="Recuérdame" class="logo2">
             <p></p>
-            
             <button class="contenedor2" id="btn-comenzar">Comenzar</button>
-            
         </div>
     </div>
 
+    <!-- Menú principal -->
     <div id="menu-principal" style="display: none;">
         <div class="contenedor">
             <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
-            <h2>Bienvenido </h2>
-            <button id="btn-personas"> Personas</button>
+            <h2>Bienvenido</h2>
+            <button id="btn-personas">Personas</button>
         </div>
     </div>
 
+    <!-- Pantalla de registro de personas -->
     <div id="pantalla-personas" style="display: none;">
-        <!-- Botón de volver atrás -->
         <button class="btn-volver" onclick="volverAInicio()">← Volver</button>
-
         <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
         <h1>Registrar una Persona</h1>
         <form id="form-persona">
-            <input type="text" id="nombre" placeholder="Nombre" required>
-            <input type="text" id="relacion" placeholder="Relación" required>
-            <input type="file" id="foto" placeholder="Seleccionar imagen" required>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+            <input type="text" id="relacion" name="relacion" placeholder="Relación" required>
+            
+            <!-- Botón básico para subir archivos -->
+            <input type="file" id="foto" name="foto" accept="image/*" required>
+        
             <button type="submit">Guardar Persona</button>
         </form>
 
         <div id="lista-personas"></div>
-        <button class="btn-eliminar">
-            <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
-          </button>
     </div>
-    
-
-    <!-- From Uiverse.io by vinodjangid07 --> 
-
 
     <script src="app.js"></script>
 </body>

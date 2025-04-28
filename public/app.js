@@ -11,7 +11,7 @@ document.getElementById("btn-personas").addEventListener("click", () => {
 
 async function cargarPersonas() {
     try {
-        const response = await fetch("http://192.168.127.113:5000/personas");
+        const response = await fetch("http://192.168.125.191:5000/personas");
         const data = await response.json();
 
         const lista = document.getElementById("lista-personas");
@@ -24,7 +24,7 @@ async function cargarPersonas() {
                 <img src="${persona.foto}" alt="${persona.nombre}" width="100">
                 <h2>${persona.nombre}</h2>
                 <p>${persona.relacion}</p>
-                <button class="btn-eliminar" onclick="eliminarPersona('${persona._id}')">
+                <button class="btn-eliminar" data-id="${persona._id}">
                     <svg viewBox="0 0 448 512" class="svgIcon">
                         <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
                     </svg>
@@ -32,6 +32,15 @@ async function cargarPersonas() {
             `;
             lista.appendChild(elemento);
         });
+
+        // Ahora agregamos los eventos a los botones eliminar
+        document.querySelectorAll(".btn-eliminar").forEach(boton => {
+            boton.addEventListener("click", async () => {
+                const id = boton.getAttribute("data-id");
+                eliminarPersona(id);
+            });
+        });
+
     } catch (error) {
         console.error("❌ Error al obtener datos:", error);
     }
@@ -44,6 +53,11 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     const relacion = document.getElementById("relacion").value.trim();
     const fotoInput = document.getElementById("foto");
 
+    console.log("🔎 Datos enviados:");
+    console.log("Nombre:", nombre);
+    console.log("Relación:", relacion);
+    console.log("Archivo:", fotoInput.files[0]);
+
     if (!nombre || !relacion || !fotoInput.files[0]) {
         alert("⚠️ Todos los campos son obligatorios.");
         return;
@@ -55,7 +69,7 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     formData.append("foto", fotoInput.files[0]);
 
     try {
-        const respuesta = await fetch("http://192.168.127.113:5000/persona", {
+        const respuesta = await fetch("http://192.168.125.191:5000/persona", {
             method: "POST",
             body: formData
         });
@@ -73,13 +87,13 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     } catch (error) {
         console.error("❌ Error al enviar datos:", error);
     }
-});
+}); // <-- AHORA SÍ está cerrado el event listener!!
 
 async function eliminarPersona(id) {
     if (!confirm("⚠️ ¿Seguro que querés eliminar esta persona?")) return;
 
     try {
-        const respuesta = await fetch(`http://192.168.127.113:5000/persona/${id}`, {
+        const respuesta = await fetch(`http://192.168.125.191:5000/persona/${id}`, {
             method: "DELETE"
         });
 
