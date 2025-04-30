@@ -115,3 +115,36 @@ function volverAInicio() {
     document.getElementById("pantalla-personas").style.display = "none";
     document.getElementById("menu-principal").style.display = "block";
 }
+
+// Función para mostrar las pantallas correspondientes
+function mostrarPantalla(pantalla) {
+    // Ocultar todas las pantallas
+    document.getElementById('pantalla-inicial').style.display = 'none';
+    document.getElementById('pantalla-personas').style.display = 'none';
+    document.getElementById('estadisticas').style.display = 'none';
+    document.getElementById('configuracion').style.display = 'none';
+  
+    // Mostrar la pantalla seleccionada
+    if (pantalla === 'personas') {
+      document.getElementById('pantalla-personas').style.display = 'block';
+    } else if (pantalla === 'estadisticas') {
+      document.getElementById('estadisticas').style.display = 'block';
+    } else if (pantalla === 'configuracion') {
+      document.getElementById('configuracion').style.display = 'block';
+    }
+  }
+  
+  // Función para volver a la pantalla inicial
+  function volverAInicio() {
+    document.getElementById('pantalla-personas').style.display = 'none';
+    document.getElementById('pantalla-inicial').style.display = 'block';
+  }
+  
+  // Función para comenzar y mostrar la barra de navegación
+  document.getElementById('btn-comenzar').addEventListener('click', function() {
+    document.getElementById('pantalla-inicial').style.display = 'none';
+    document.getElementById('barra-navegacion').style.display = 'flex';
+    document.getElementById('menu-principal').style.display = 'block';  // Mostrar el menú principal o inicio
+  });
+  
+  

@@ -32,7 +32,7 @@ body {
 }
 
 /* Pantallas */
-#pantalla-inicial, #pantalla-personas, #menu-pricipal {
+#pantalla-inicial, #pantalla-personas, #menu-pricipal, #estadisticas, #configuracion {
     width: 100%;
     max-width: 500px;
     margin: auto;
@@ -40,8 +40,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px; /* Más espacio entre elementos principales */
-    padding: 20px 0; /* Separación vertical */
+    gap: 40px;
+    padding: 20px 0;
     animation: fadeIn 0.6s ease-out;
 }
 
@@ -69,12 +69,12 @@ header, #pantalla-inicial h1, #guardar-persona h3, #personas h3 {
 #guardar-persona {
     width: 100%;
     background: #ffffff;
-    padding: 32px; /* Más aire interno */
+    padding: 32px;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
-    gap: 24px; /* Más espacio entre inputs */
+    gap: 24px;
 }
 
 input[type="text"], input[type="url"], input[type="file"] {
@@ -85,44 +85,24 @@ input[type="text"], input[type="url"], input[type="file"] {
     font-size: 16px;
     background: #f2f2f7;
     transition: 0.3s;
-}
-
-input[type="text"], input[type="url"], input[type="file"] {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #d1d1d6;
-    border-radius: 12px;
-    font-size: 16px;
-    background: #f2f2f7;
-    transition: 0.3s;
-    margin: 5px;
-}
-
-/* Para input de tipo archivo */
-input[type="file"] {
-    padding: 10px;
-    font-size: 14px;
-    background: #ffffff;
-    border: 1px solid #d1d1d6;
 }
 
 /* Botones */
-button, .button, .btn-volver {
-    width: 100%;
+button, .button, .btn-volver, .btn-nav {
     padding: 14px;
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    background: #007aff;
+    background: #0c91be;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.3s;
-    margin-top: 10px; /* Agregado: separación entre botones */
+    margin-top: 10px;
 }
 
-button:hover, .button:hover, .btn-volver:hover {
-    background: #0051cb;
+button:hover, .button:hover, .btn-volver:hover, .btn-nav:hover {
+    background: #0c91be;
 }
 
 /* Personas */
@@ -130,7 +110,7 @@ button:hover, .button:hover, .btn-volver:hover {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Más ordenado */
+    gap: 20px;
 }
 
 .persona {
@@ -183,26 +163,52 @@ button:hover, .button:hover, .btn-volver:hover {
     background: #d60000;
 }
 
+/* Barra de navegación */
+#barra-navegacion {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background: #ffffff;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+#barra-navegacion .btn-nav {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1c1c1e;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#barra-navegacion .btn-nav:hover {
+    background: #f0f0f0;
+}
+
 /* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE ajustes */
+/* Responsivo */
 @media (max-width: 600px) {
-    #pantalla-inicial, #pantalla-personas, #menu-pricipal {
-        gap: 30px;
-        padding: 10px 0;
-    }
-
-    #guardar-persona {
-        padding: 24px;
-        gap: 20px;
-    }
-
-    button, .button, .btn-volver {
+    button, .button, .btn-volver, .btn-nav {
         padding: 12px;
         font-size: 15px;
     }
+}
+
+/* Estilos para el ícono de usuarios */
+.lucide-users-icon {
+    width: 50px;
+    height: 50px;
+    color: #0c91be;
+    margin-top: 20px;
 }
