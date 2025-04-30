@@ -1,335 +1,208 @@
-/* Fuente para todo el texto */
-body {
-    font-family: 'Poppins', sans-serif; /* Fuente canchera */
-    font-weight: bold; /* Poner todo en negrita */
-}
-
-/* Estilos para el texto de Bienvenido y Registrar Personas */
-#bienvenido,
-#registrar-personas {
-    color: #0c91be; /* Color del texto 'recuerdame' */
-    font-family: 'Poppins', sans-serif; /* Fuente más moderna */
-    font-size: 26px;
-    font-weight: bold;
-}
-
-/* Estilo para la pantalla inicial */
-#pantalla-inicial {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Ocupar toda la altura de la pantalla */
-    text-align: center;
-}
-
-.contenedor {
-    display: flex;
-    flex-direction: column; /* Alinear elementos en columna */
-    align-items: center;
-    gap: 20px; /* Espacio entre elementos */
-}
-
-.logo2 {
-    width: 150px; /* Ajusta el tamaño del logo según necesites */
-}
-
-/* Animación de entrada del contenedor */
-@keyframes fadeInInicio {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Estilos para la sección de formulario de guardar persona */
-#guardar-persona {
-    margin-bottom: 40px;
-    background-color: #b0fcff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgb(126, 237, 249);
-    margin-bottom: 50px;
-    margin-top: 30px;
-}
-
-#guardar-persona h3 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0c91be;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#guardar-persona input {
-    margin-bottom: 15px;
-}
-
-/* Estilos para los campos de texto */
-input[type="text"], input[type="url"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    border: 2px solid #0c91be;
-    border-radius: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: all 0.3s;
-}
-
-input[type="text"]:focus, input[type="url"]:focus {
-    border-color: #ffffff;
-    outline: none;
-}
-
-/* Estilos para los botones */
-button {
-    margin-top: 100px;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: 500;
-    color: #00000080;
-    text-shadow: none;
-    background: transparent;
-    cursor: pointer;
-    box-shadow: transparent;
-    border: 1px solid #3e3e3e80;
-    transition: 0.5s ease;
-    user-select: none;
-}
-
-#btn:hover,
-:focus {
-    color: #ffffff;
-    background: #34a1fa;
-    border: 1px solid #008cff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
-      0 0 100px #008cff;
-}
-
-/* Animación de aparición para los botones */
-@keyframes mostrarBoton {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Estilos generales */
-body {
-    background-image: url('textura.jpg');
-    background-repeat: repeat; /* Para que se repita y cubra toda la página */
-    background-size: auto;     /* O `cover` si querés que la escale */
-    background-color: #000;    /* Color de fondo por si la imagen no carga */
+/* Reset inicial */
+* {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    font-weight: bold; 
+    box-sizing: border-box;
 }
 
-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#personas h3 {
-    font-size: 26px;
-    color: #0c91be;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Estilos para cada persona */
-.persona {
+body {
+    font-family: 'SF Pro Display', 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+    color: #1c1c1e;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin: 20px;
-    padding: 15px;
-    background-color: rgba(26, 26, 26, 0.8); /* Fondo translúcido */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    transition: none; /* sin animación */
+    padding: 20px;
 }
 
-.persona img {
-    width: 80%;
-    max-width: 200px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.persona h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0c91be;
-    margin-bottom: 5px;
-}
-
-.persona p {
-    color: #999;
-    font-size: 16px;
-}
-
-/* Estilo para el texto de Bienvenido en la pantalla inicial */
-#pantalla-inicial h1 {
-    font-family: 'Poppins', sans-serif; /* Fuente canchera */
-    color: #0c91be; /* Color del texto 'recuerdame' */
-    font-weight: bold;
-    font-size: 36px;
-}
-
-/* Animación de entrada para las personas */
-@keyframes mostrarPersona {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animación para los botones Comenzar y Personas */
-#inicio button {
-    animation: mostrarBoton 0.6s forwards;
-}
-
-#personas button {
-    animation: mostrarBoton 0.6s forwards;
-}
-
-/* Estilo del logo */
-.logo {
-    width: 150px;
-    max-width: 80%;
-    margin-bottom: 30px;
-    animation: aparecerLogo 1s ease-out forwards;
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-@keyframes aparecerLogo {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#pantalla-personas {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Ocupar toda la altura de la pantalla */
-    text-align: center;
-}
-
-#menu-pricipal {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Ocupar toda la altura de la pantalla */
-    text-align: center;
-    gap: 20px; /* Espacio entre elementos */
-}
-
-.contenedor {
-    display: flex;
-    flex-direction: column; /* Alinear elementos en columna */
-    align-items: center;
-    gap: 200px; /* Espacio entre elementos */
+/* Logo */
+.logo, .logo2, .logo-fijo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
 }
 
 .logo-fijo {
     position: fixed;
-    top: 10px; /* 📌 Separación desde arriba */
-    right: 10px; /* 📌 Separación desde la derecha */
-    width: 50px; /* 📌 Tamaño más pequeño */
-    z-index: 1000; /* 📌 Asegura que esté encima de los demás elementos */
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    z-index: 1000;
 }
 
-.btn-volver {
-    margin-top: 100px;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: 500;
-    color: #00000080;
-    text-shadow: none;
-    background: transparent;
-    cursor: pointer;
-    box-shadow: transparent;
-    border: 1px solid #3e3e3e80;
-    transition: 0.5s ease;
-    user-select: none;
+/* Pantallas */
+#pantalla-inicial, #pantalla-personas, #menu-pricipal {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Más espacio entre elementos principales */
+    padding: 20px 0; /* Separación vertical */
+    animation: fadeIn 0.6s ease-out;
 }
 
-#btn:hover,
-:focus {
-    color: #ffffff;
-    background: #34a1fa;
-    border: 1px solid #008cff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
-      0 0 100px #008cff;
-}
-
-/* boton eliminar */
-.btn-eliminar { 
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgb(20, 20, 20);
-    border: none;
+header, #pantalla-inicial h1, #guardar-persona h3, #personas h3 {
+    font-size: 24px;
     font-weight: 600;
+    text-align: center;
+    color: #1c1c1e;
+}
+
+#pantalla-inicial h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Contenedores */
+.contenedor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Formulario */
+#guardar-persona {
+    width: 100%;
+    background: #ffffff;
+    padding: 32px; /* Más aire interno */
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Más espacio entre inputs */
+}
+
+input[type="text"], input[type="url"], input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d1d6;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #f2f2f7;
+    transition: 0.3s;
+}
+
+input[type="text"], input[type="url"], input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d1d6;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #f2f2f7;
+    transition: 0.3s;
+    margin: 5px;
+}
+
+/* Para input de tipo archivo */
+input[type="file"] {
+    padding: 10px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid #d1d1d6;
+}
+
+/* Botones */
+button, .button, .btn-volver {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #007aff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px; /* Agregado: separación entre botones */
+}
+
+button:hover, .button:hover, .btn-volver:hover {
+    background: #0051cb;
+}
+
+/* Personas */
+#personas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Más ordenado */
+}
+
+.persona {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.persona img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #d1d1d6;
+}
+
+.persona h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1c1c1e;
+}
+
+.persona p {
+    font-size: 16px;
+    color: #636366;
+}
+
+/* Botón Eliminar */
+.btn-eliminar {
+    width: 40px;
+    height: 40px;
+    background: #ff3b30;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    border: none;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-    transition-duration: .3s;
-    overflow: hidden;
-    position: relative; /* ✅ Necesario para que ::before funcione bien */
-}
-
-.svgIcon {
-    width: 12px;
-    transition-duration: .3s;
-}
-
-.svgIcon path {
-    fill: white;
+    transition: background 0.3s;
 }
 
 .btn-eliminar:hover {
-    width: 140px;
-    border-radius: 50px;
-    background-color: rgb(255, 69, 69);
+    background: #d60000;
 }
 
-.btn-eliminar:hover .svgIcon {
-    width: 50px;
-    transform: translateY(60%);
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.btn-eliminar::before {
-    position: absolute;
-    top: -20px;
-    content: "Eliminar";
-    color: white;
-    font-size: 2px;
-    font-weight: 600;
-    letter-spacing: .5px;
-    transition-duration: .3s;
-    padding: 10px;
+/* RESPONSIVE ajustes */
+@media (max-width: 600px) {
+    #pantalla-inicial, #pantalla-personas, #menu-pricipal {
+        gap: 30px;
+        padding: 10px 0;
+    }
+
+    #guardar-persona {
+        padding: 24px;
+        gap: 20px;
+    }
+
+    button, .button, .btn-volver {
+        padding: 12px;
+        font-size: 15px;
+    }
 }
