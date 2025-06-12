@@ -1,84 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recuérdame</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuérdame</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Pantalla inicial -->
-
-<div id="pantalla-inicial">
-  <div class="contenedor1">
-    <img src="logo2.png" alt="Recuérdame" class="logo2">
-    <button class="contenedor2" id="btn-comenzar">Comenzar</button>
-  </div>
-</div>
-
-
-  <!-- Menú principal -->
-  <div id="menu-principal" style="display: none;">
-    <div class="contenedor">
-      <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
-      <h2>Bienvenido</h2>
+    <div id="pantalla-inicial">
+        <div class="contenedor1">
+            <img src="images/logo2.png" alt="Recuérdame" class="logo2">
+            <button class="contenedor2" id="btn-comenzar">Comenzar</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Pantalla de registro de personas -->
-  <div id="pantalla-personas" style="display: none;">
-    
-    </button>
+    <div id="menu-principal" style="display: none;">
+        <div class="contenedor">
+            <img src="images/logo2.png" alt="Recuérdame" class="logo-fijo">
+            <h2>Bienvenido</h2>
+            <button class="button" id="btn-iniciar-juego">Iniciar Juego de Preguntas</button>
+        </div>
+    </div>
 
-    <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
-    <h1 class="Registro">Registrar una Persona</h1>
+    <div id="pantalla-personas" style="display: none;">
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+        <h1 class="Registro">Registrar una Persona</h1>
 
-    <form id="form-persona">
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-      <input type="text" id="relacion" name="relacion" placeholder="Relación" required>
+        <form id="form-persona">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+            <input type="text" id="relacion" name="relacion" placeholder="Relación" required>
 
-      <!-- Botón personalizado para subir imagen -->
-      <div class="contenedor-boton-archivo">
-        <input type="file" id="foto" name="foto" accept="image/*" required hidden>
-        <button type="button" class="button1" onclick="document.getElementById('foto').click()">
-          <i data-lucide="image"></i>
-          <span class="text">Subir Foto</span>
+            <div class="contenedor-boton-archivo">
+                <input type="file" id="foto" name="foto" accept="image/*" required hidden>
+                <button type="button" class="button1" onclick="document.getElementById('foto').click()">
+                    <i data-lucide="image"></i>
+                    <span class="text">Subir Foto</span>
+                </button>
+            </div>
+            <button type="submit" class="button">Guardar Persona</button> 
+        </form>
+
+        <div id="lista-personas">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+        </div>
+    </div>
+
+    <div id="pantalla-preguntas" style="display: none;">
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+        <h1 class="Registro">Pregunta del Día</h1>
+        <div id="pregunta-container" class="contenedor">
+            <p id="pregunta-texto"></p>
+            <div id="opciones-respuesta">
+                </div>
+            <button id="btn-enviar-respuesta" style="display: none;">Enviar Respuesta</button>
+            <p id="mensaje-respuesta" style="margin-top: 10px; font-weight: bold;"></p>
+            <button id="btn-siguiente-pregunta" style="display: none; margin-top: 10px;">Siguiente Pregunta</button>
+        </div>
+    </div>
+
+    <div id="pantalla-estadisticas" style="display: none;">
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+        <h1 class="Registro">Estadísticas</h1>
+        <div class="contenedor">
+            <h3>Rendimiento General</h3>
+            <p>Respuestas Correctas: <span id="correctas-generales"></span></p>
+            <p>Respuestas Incorrectas: <span id="incorrectas-generales"></span></p>
+            <p>Porcentaje de Acierto: <span id="porcentaje-general"></span>%</p>
+            <hr style="width: 100%; margin: 20px 0;">
+            <h3>Estadísticas por Pregunta</h3>
+            <div id="grafico-estadisticas" style="width: 100%; max-width: 400px; margin: 20px auto;">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div id="lista-estadisticas-preguntas">
+                </div>
+        </div>
+    </div>
+
+    <div id="pantalla-configuracion" style="display: none;">
+        <img src="logo2.png" alt="Recuérdame" class="logo-fijo">
+        <h1 class="Registro">Configuración</h1>
+        <p>Aquí puedes ajustar las configuraciones de la aplicación.</p>
+    </div>
+
+    <div id="barra-navegacion" style="display: none;">
+        <button class="btn-nav" id="btn-nav-menu" onclick="mostrarPantalla('menu')">
+            <i data-lucide="home"></i>
         </button>
-      </div>
-
-      <button type="submit">Guardar Persona</button>
-    </form>
-
-    <div id="lista-personas">
-      <!-- Ícono de usuarios añadido aquí -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
+        <button class="btn-nav" id="btn-nav-personas" onclick="mostrarPantalla('personas')">
+            <i data-lucide="users"></i>
+        </button>
+        <button class="btn-nav" id="btn-nav-preguntas" onclick="mostrarPantalla('preguntas')">
+            <i data-lucide="help-circle"></i>
+        </button>
+        <button class="btn-nav" id="btn-nav-estadisticas" onclick="mostrarPantalla('estadisticas')">
+            <i data-lucide="bar-chart-3"></i>
+        </button>
+        <button class="btn-nav" id="btn-nav-configuracion" onclick="mostrarPantalla('configuracion')">
+            <i data-lucide="settings"></i>
+        </button>
     </div>
-  </div>
 
-  <!-- Barra de navegación -->
-  <!-- Barra de navegación -->
-<div id="barra-navegacion" style="display: none;">
-  <button class="btn-nav" id="btn-personas" onclick="mostrarPantalla('personas')">
-    <i data-lucide="users"></i>
-  </button>
-  <button class="btn-nav" id="btn-estadisticas" onclick="mostrarPantalla('estadisticas')">
-    <i data-lucide="bar-chart-3"></i>
-  </button>
-  <button class="btn-nav" id="btn-configuracion" onclick="mostrarPantalla('configuracion')">
-    <i data-lucide="settings"></i>
-  </button>
-</div>
-
-
-  <script src="app.js"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
