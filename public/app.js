@@ -1,3 +1,5 @@
+const API_URL = window.location.origin.includes("localhost") ? "http://localhost:5000" : window.location.origin;
+
 document.getElementById("btn-comenzar").addEventListener("click", () => {
     document.getElementById("pantalla-inicial").style.display = "none";
     document.getElementById("menu-principal").style.display = "block";
@@ -11,7 +13,7 @@ document.getElementById("btn-personas").addEventListener("click", () => {
 
 async function cargarPersonas() {
     try {
-        const response = await fetch("http://192.168.124.233:5000/personas");
+        const response = await fetch(`${API_URL}/personas`);
         const data = await response.json();
 
         const lista = document.getElementById("lista-personas");
@@ -33,7 +35,6 @@ async function cargarPersonas() {
             lista.appendChild(elemento);
         });
 
-        // Ahora agregamos los eventos a los botones eliminar
         document.querySelectorAll(".btn-eliminar").forEach(boton => {
             boton.addEventListener("click", async () => {
                 const id = boton.getAttribute("data-id");
@@ -53,11 +54,6 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     const relacion = document.getElementById("relacion").value.trim();
     const fotoInput = document.getElementById("foto");
 
-    console.log("🔎 Datos enviados:");
-    console.log("Nombre:", nombre);
-    console.log("Relación:", relacion);
-    console.log("Archivo:", fotoInput.files[0]);
-
     if (!nombre || !relacion || !fotoInput.files[0]) {
         alert("⚠️ Todos los campos son obligatorios.");
         return;
@@ -69,13 +65,12 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     formData.append("foto", fotoInput.files[0]);
 
     try {
-        const respuesta = await fetch("http://192.168.124.233:5000/persona", {
+        const respuesta = await fetch(`${API_URL}/persona`, {
             method: "POST",
             body: formData
         });
 
         const resultado = await respuesta.json();
-        console.log("🔎 Respuesta del servidor:", resultado);
 
         if (respuesta.ok) {
             alert("✅ Persona guardada correctamente!");
@@ -87,18 +82,17 @@ document.getElementById("form-persona").addEventListener("submit", async (event)
     } catch (error) {
         console.error("❌ Error al enviar datos:", error);
     }
-}); // <-- AHORA SÍ está cerrado el event listener!!
+});
 
 async function eliminarPersona(id) {
     if (!confirm("⚠️ ¿Seguro que querés eliminar esta persona?")) return;
 
     try {
-        const respuesta = await fetch(`http://192.168.124.233:5000/persona/${id}`, {
+        const respuesta = await fetch(`${API_URL}/persona/${id}`, {
             method: "DELETE"
         });
 
         const resultado = await respuesta.json();
-        console.log("🔎 Eliminada:", resultado);
 
         if (respuesta.ok) {
             alert("✅ Persona eliminada!");
@@ -111,40 +105,23 @@ async function eliminarPersona(id) {
     }
 }
 
-function volverAInicio() {
-    document.getElementById("pantalla-personas").style.display = "none";
-    document.getElementById("menu-principal").style.display = "block";
-}
-
-// Función para mostrar las pantallas correspondientes
 function mostrarPantalla(pantalla) {
-    // Ocultar todas las pantallas
     document.getElementById('pantalla-inicial').style.display = 'none';
     document.getElementById('pantalla-personas').style.display = 'none';
     document.getElementById('estadisticas').style.display = 'none';
     document.getElementById('configuracion').style.display = 'none';
-  
-    // Mostrar la pantalla seleccionada
+
     if (pantalla === 'personas') {
-      document.getElementById('pantalla-personas').style.display = 'block';
+        document.getElementById('pantalla-personas').style.display = 'block';
     } else if (pantalla === 'estadisticas') {
-      document.getElementById('estadisticas').style.display = 'block';
+        document.getElementById('estadisticas').style.display = 'block';
     } else if (pantalla === 'configuracion') {
-      document.getElementById('configuracion').style.display = 'block';
+        document.getElementById('configuracion').style.display = 'block';
     }
-  }
-  
-  // Función para volver a la pantalla inicial
-  function volverAInicio() {
-    document.getElementById('pantalla-personas').style.display = 'none';
-    document.getElementById('pantalla-inicial').style.display = 'block';
-  }
-  
-  // Función para comenzar y mostrar la barra de navegación
-  document.getElementById('btn-comenzar').addEventListener('click', function() {
+}
+
+document.getElementById('btn-comenzar').addEventListener('click', function() {
     document.getElementById('pantalla-inicial').style.display = 'none';
     document.getElementById('barra-navegacion').style.display = 'flex';
-    document.getElementById('menu-principal').style.display = 'block';  // Mostrar el menú principal o inicio
-  });
-  
-  
+    document.getElementById('menu-principal').style.display = 'block';
+});

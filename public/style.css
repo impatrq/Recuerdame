@@ -212,3 +212,44 @@ button:hover, .button:hover, .btn-volver:hover, .btn-nav:hover {
     color: #0c91be;
     margin-top: 20px;
 }
+
+
+/* Ocultar texto en los botones de navegación */
+#barra-navegacion .btn-nav span {
+    display: none;
+}
+
+/* Ajustes para mostrar solo iconos centrados */
+#barra-navegacion .btn-nav i {
+    display: block;
+    margin: auto;
+    width: 28px;
+    height: 28px;
+    color: #0c91be;
+}
+
+/* Eliminar padding innecesario */
+#barra-navegacion .btn-nav {
+    padding: 12px 0;
+}
+
+
+#pantalla-inicial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0; /* Quitamos padding que empuja hacia abajo */
+}
+
+.contenedor1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo2 {
+    width: 150px;
+    height: auto;
+}

@@ -9,13 +9,14 @@
 </head>
 <body>
   <!-- Pantalla inicial -->
-  <div id="pantalla-inicial">
-    <div class="contenedor1">
-      <img src="logo2.png" alt="Recuérdame" class="logo2">
-      <p></p>
-      <button class="contenedor2" id="btn-comenzar">Comenzar</button>
-    </div>
+
+<div id="pantalla-inicial">
+  <div class="contenedor1">
+    <img src="logo2.png" alt="Recuérdame" class="logo2">
+    <button class="contenedor2" id="btn-comenzar">Comenzar</button>
   </div>
+</div>
+
 
   <!-- Menú principal -->
   <div id="menu-principal" style="display: none;">
@@ -61,20 +62,19 @@
   </div>
 
   <!-- Barra de navegación -->
-  <div id="barra-navegacion" style="display: none;">
-    <button class="btn-nav" id="btn-personas" onclick="mostrarPantalla('personas')">
-      <i data-lucide="users"></i>
-      <span>Personas</span>
-    </button>
-    <button class="btn-nav" id="btn-estadisticas" onclick="mostrarPantalla('estadisticas')">
-      <i data-lucide="bar-chart-3"></i>
-      <span>Estadísticas</span>
-    </button>
-    <button class="btn-nav" id="btn-configuracion" onclick="mostrarPantalla('configuracion')">
-      <i data-lucide="settings"></i>
-      <span>Configuración</span>
-    </button>
-  </div>
+  <!-- Barra de navegación -->
+<div id="barra-navegacion" style="display: none;">
+  <button class="btn-nav" id="btn-personas" onclick="mostrarPantalla('personas')">
+    <i data-lucide="users"></i>
+  </button>
+  <button class="btn-nav" id="btn-estadisticas" onclick="mostrarPantalla('estadisticas')">
+    <i data-lucide="bar-chart-3"></i>
+  </button>
+  <button class="btn-nav" id="btn-configuracion" onclick="mostrarPantalla('configuracion')">
+    <i data-lucide="settings"></i>
+  </button>
+</div>
+
 
   <script src="app.js"></script>
   <script>
