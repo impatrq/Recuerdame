@@ -14,7 +14,6 @@ mongoose.connect("mongodb://localhost:27017/recuerdame", { useNewUrlParser: true
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
-// Asegurarse de que la carpeta de uploads esté servida estáticamente
 app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
 
@@ -48,26 +47,27 @@ const Persona = mongoose.model("Persona", PersonaSchema);
 
 // --- NUEVOS Esquemas y Modelos para Preguntas y Respuestas ---
 
-// Esquema para Preguntas
+// Esquema para Preguntas - AHORA INCLUYE respuestaCorrecta
 const PreguntaSchema = new mongoose.Schema({
-    texto: { type: String, required: true }, // El texto de la pregunta
-    tipo: { type: String, enum: ['multiple_choice', 'text_input', 'binary'], default: 'text_input' }, // Tipo de pregunta: opción múltiple, texto libre, sí/no
-    opciones: { type: [String], default: [] }, // Opciones si es de multiple_choice
+    texto: { type: String, required: true },
+    tipo: { type: String, enum: ['multiple_choice', 'text_input', 'binary'], default: 'text_input' },
+    opciones: { type: [String], default: [] },
+    respuestaCorrecta: { type: String }, // <--- CAMBIO AQUÍ: Campo para almacenar la respuesta correcta
     fechaCreacion: { type: Date, default: Date.now }
 });
 const Pregunta = mongoose.model("Pregunta", PreguntaSchema);
 
-// Esquema para Respuestas
+// Esquema para Respuestas (sin cambios aquí, 'acierto' se determina en frontend)
 const RespuestaSchema = new mongoose.Schema({
-    pregunta: { type: mongoose.Schema.Types.ObjectId, ref: 'Pregunta', required: true }, // Referencia a la pregunta
-    respuestaTexto: { type: String }, // Respuesta para texto libre
-    respuestaOpcion: { type: String }, // Respuesta para opción múltiple o binaria (ej. 'si'/'no')
+    pregunta: { type: mongoose.Schema.Types.ObjectId, ref: 'Pregunta', required: true },
+    respuestaTexto: { type: String },
+    respuestaOpcion: { type: String },
     fechaRespuesta: { type: Date, default: Date.now },
-    acierto: { type: Boolean } // true si la respuesta es correcta (a definir por la lógica, ej. si coincide con una opción esperada o criterio)
+    acierto: { type: Boolean }
 });
 const Respuesta = mongoose.model("Respuesta", RespuestaSchema);
 
-// --- Rutas Existentes para Personas ---
+// --- Rutas Existentes para Personas (sin cambios) ---
 app.get("/personas", async (req, res) => {
     try {
         const personas = await Persona.find();
@@ -103,7 +103,6 @@ app.delete("/persona/:id", async (req, res) => {
         if (!personaEliminada) {
             return res.status(404).json({ error: "❌ Persona no encontrada." });
         }
-        // TODO: Considerar eliminar el archivo de la foto del sistema de archivos también
         res.json({ message: "✅ Persona eliminada correctamente", persona: personaEliminada });
     } catch (error) {
         console.error("Error al eliminar persona:", error);
@@ -111,16 +110,16 @@ app.delete("/persona/:id", async (req, res) => {
     }
 });
 
-// --- NUEVAS Rutas API para Preguntas ---
+// --- Rutas API para Preguntas (actualizada para recibir respuestaCorrecta) ---
 
 // Ruta para agregar una nueva pregunta (útil para que el administrador las defina)
 app.post("/pregunta", async (req, res) => {
     try {
-        const { texto, tipo, opciones } = req.body;
+        const { texto, tipo, opciones, respuestaCorrecta } = req.body;
         if (!texto) {
             return res.status(400).json({ error: "⚠️ El texto de la pregunta es obligatorio." });
         }
-        const nuevaPregunta = new Pregunta({ texto, tipo, opciones });
+        const nuevaPregunta = new Pregunta({ texto, tipo, opciones, respuestaCorrecta });
         await nuevaPregunta.save();
         res.status(201).json({ message: "✅ Pregunta agregada correctamente", pregunta: nuevaPregunta });
     } catch (error) {
@@ -129,17 +128,16 @@ app.post("/pregunta", async (req, res) => {
     }
 });
 
-// Ruta para obtener una pregunta aleatoria o la pregunta del día
-// Para simplificar, obtenemos la última pregunta agregada o una aleatoria.
-// Podrías implementar una lógica más compleja para "pregunta del día".
+// Ruta para obtener una pregunta aleatoria o la pregunta del día (sin cambios)
 app.get("/pregunta/diaria", async (req, res) => {
     try {
         const count = await Pregunta.countDocuments();
         if (count === 0) {
+            // Este 404 es intencional si no hay preguntas, para que el frontend lo maneje
             return res.status(404).json({ message: "No hay preguntas disponibles." });
         }
         const random = Math.floor(Math.random() * count);
-        const pregunta = await Pregunta.findOne().skip(random); // Obtiene una pregunta aleatoria
+        const pregunta = await Pregunta.findOne().skip(random);
         res.json(pregunta);
     } catch (error) {
         console.error("Error al obtener pregunta diaria:", error);
@@ -147,7 +145,7 @@ app.get("/pregunta/diaria", async (req, res) => {
     }
 });
 
-// Ruta para enviar una respuesta a una pregunta
+// Ruta para enviar una respuesta a una pregunta (sin cambios)
 app.post("/respuesta", async (req, res) => {
     try {
         const { preguntaId, respuestaTexto, respuestaOpcion, acierto } = req.body;
@@ -168,36 +166,34 @@ app.post("/respuesta", async (req, res) => {
     }
 });
 
-// Ruta para obtener estadísticas (ej. respuestas correctas por pregunta o por fecha)
+// Ruta para obtener estadísticas (sin cambios)
 app.get("/estadisticas", async (req, res) => {
     try {
-        // Ejemplo de estadística: contar respuestas correctas vs incorrectas
         const totalRespuestas = await Respuesta.countDocuments();
         const respuestasCorrectas = await Respuesta.countDocuments({ acierto: true });
         const respuestasIncorrectas = await Respuesta.countDocuments({ acierto: false });
 
-        // También podemos agrupar por pregunta y ver el rendimiento
         const estadisticasPorPregunta = await Respuesta.aggregate([
             {
                 $group: {
-                    _id: "$pregunta", // Agrupar por el ID de la pregunta
+                    _id: "$pregunta",
                     total: { $sum: 1 },
                     correctas: { $sum: { $cond: ["$acierto", 1, 0] } }
                 }
             },
             {
-                $lookup: { // Unir con la colección de preguntas para obtener el texto de la pregunta
-                    from: "preguntas", // Nombre de la colección en MongoDB (Mongoose pluraliza el modelo 'Pregunta' a 'preguntas')
+                $lookup: {
+                    from: "preguntas",
                     localField: "_id",
                     foreignField: "_id",
                     as: "detallesPregunta"
                 }
             },
             {
-                $unwind: "$detallesPregunta" // Desestructurar el array para obtener el objeto de la pregunta
+                $unwind: "$detallesPregunta"
             },
             {
-                $project: { // Seleccionar los campos que queremos en el resultado
+                $project: {
                     _id: 0,
                     preguntaId: "$_id",
                     textoPregunta: "$detallesPregunta.texto",
@@ -218,6 +214,20 @@ app.get("/estadisticas", async (req, res) => {
     } catch (error) {
         console.error("Error al obtener estadísticas:", error);
         res.status(500).json({ error: "❌ Error al obtener estadísticas: " + (error.message || "Error desconocido") });
+    }
+});
+
+// --- NUEVA RUTA: Borrar todas las estadísticas ---
+app.delete("/estadisticas/reset", async (req, res) => {
+    try {
+        const result = await Respuesta.deleteMany({}); // Borra todos los documentos en la colección de respuestas
+        res.json({
+            message: "✅ Todas las estadísticas han sido borradas.",
+            deletedCount: result.deletedCount
+        });
+    } catch (error) {
+        console.error("Error al borrar estadísticas:", error);
+        res.status(500).json({ error: "❌ Error al borrar estadísticas: " + (error.message || "Error desconocido") });
     }
 });
 

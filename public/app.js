@@ -5,7 +5,6 @@ let currentQuestion = null; // Variable para almacenar la pregunta actual
 // --- Manejo de Pantallas ---
 function mostrarPantalla(pantalla) {
     // Oculta todas las pantallas posibles
-    document.getElementById('pantalla-inicial').style.display = 'none';
     document.getElementById('menu-principal').style.display = 'none'; // Asegurarse de ocultar el menú principal
     document.getElementById('pantalla-personas').style.display = 'none';
     document.getElementById('pantalla-preguntas').style.display = 'none'; // Nueva pantalla
@@ -13,9 +12,7 @@ function mostrarPantalla(pantalla) {
     document.getElementById('pantalla-configuracion').style.display = 'none'; // Nueva pantalla
 
     // Muestra la pantalla solicitada
-    if (pantalla === 'inicial') {
-        document.getElementById('pantalla-inicial').style.display = 'flex'; // Usar flex para centrar
-    } else if (pantalla === 'menu') {
+    if (pantalla === 'menu') {
         document.getElementById('barra-navegacion').style.display = 'flex'; // Asegurarse de que la barra esté visible
         document.getElementById('menu-principal').style.display = 'block';
     } else if (pantalla === 'personas') {
@@ -36,10 +33,7 @@ function mostrarPantalla(pantalla) {
     }
 }
 
-// --- Event Listeners de Navegación ---
-document.getElementById("btn-comenzar").addEventListener("click", () => {
-    mostrarPantalla('menu');
-});
+
 
 // Botones de la barra de navegación
 document.getElementById("btn-nav-menu").addEventListener("click", () => {
@@ -452,5 +446,5 @@ async function cargarEstadisticas() {
 
 // --- Inicialización: Muestra la pantalla inicial al cargar la página ---
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarPantalla('inicial');
+    mostrarPantalla('menu');
 });
