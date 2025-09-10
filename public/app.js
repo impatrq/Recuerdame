@@ -33,8 +33,6 @@ function mostrarPantalla(pantalla) {
     }
 }
 
-
-
 // Botones de la barra de navegación
 document.getElementById("btn-nav-menu").addEventListener("click", () => {
     mostrarPantalla('menu');
@@ -50,11 +48,6 @@ document.getElementById("btn-nav-estadisticas").addEventListener("click", () => 
 });
 document.getElementById("btn-nav-configuracion").addEventListener("click", () => {
     mostrarPantalla('configuracion');
-});
-
-// Nuevo botón para iniciar el juego de preguntas desde el menú principal
-document.getElementById("btn-iniciar-juego").addEventListener("click", () => {
-    mostrarPantalla('preguntas');
 });
 
 
@@ -351,6 +344,13 @@ async function cargarEstadisticas() {
         document.getElementById("incorrectas-generales").textContent = data.respuestasIncorrectas;
         document.getElementById("porcentaje-general").textContent = data.porcentajeAciertoGeneral.toFixed(2); // Mostrar con 2 decimales
 
+        // Actualizar porcentaje en ficha rápida de rendimiento general (inicio)
+        const spanRendimiento = document.getElementById("porcentaje-rendimiento");
+        if (spanRendimiento) {
+         spanRendimiento.textContent = data.porcentajeAciertoGeneral.toFixed(2);
+        }
+
+
         // Actualizar estadísticas por pregunta en una lista
         const listaEstadisticasPreguntas = document.getElementById("lista-estadisticas-preguntas");
         listaEstadisticasPreguntas.innerHTML = ""; // Limpiar antes de agregar
@@ -387,7 +387,7 @@ async function cargarEstadisticas() {
 
 
         myChartInstance = new Chart(ctx, {
-            type: 'bar', // Puedes probar 'pie', 'doughnut', 'line'
+            type: 'line', // Puedes probar 'pie', 'doughnut', 'line'
             data: {
                 labels: labels,
                 datasets: [
@@ -447,4 +447,69 @@ async function cargarEstadisticas() {
 // --- Inicialización: Muestra la pantalla inicial al cargar la página ---
 document.addEventListener('DOMContentLoaded', () => {
     mostrarPantalla('menu');
+    mostrarFichaPaciente(); // ← agregar esta línea
 });
+
+
+
+
+
+document.getElementById("foto").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById("preview");
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    } else {
+        preview.style.display = "none";
+    }
+});
+
+
+function toggleFormularioPersona() {
+    const form = document.getElementById("form-persona");
+    const icono = document.querySelector("#btn-toggle-form i");
+
+    if (form.style.display === "none") {
+        form.style.display = "flex";
+        icono.setAttribute("data-lucide", "minus");
+    } else {
+        form.style.display = "none";
+        icono.setAttribute("data-lucide", "plus");
+    }
+
+    lucide.createIcons(); // Vuelve a renderizar el ícono después del cambio
+}
+
+function guardarConfiguracionPaciente(nombre, edad, estado) {
+    localStorage.setItem("paciente", JSON.stringify({ nombre, edad, estado }));
+}
+
+function obtenerConfiguracionPaciente() {
+    const data = localStorage.getItem("paciente");
+    return data ? JSON.parse(data) : null;
+}
+
+document.getElementById("form-configuracion").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("input-nombre-paciente").value;
+    const edad = document.getElementById("input-edad-paciente").value;
+    const estado = document.getElementById("input-estado-paciente").value;
+    guardarConfiguracionPaciente(nombre, edad, estado);
+    alert("✅ Datos guardados");
+    mostrarFichaPaciente(); // actualizar vista
+});
+
+function mostrarFichaPaciente() {
+    const datos = obtenerConfiguracionPaciente();
+    if (datos) {
+        document.getElementById("ficha-nombre").textContent = datos.nombre;
+        document.getElementById("ficha-edad").textContent = datos.edad;
+        document.getElementById("ficha-estado").textContent = datos.estado;
+    }
+}
