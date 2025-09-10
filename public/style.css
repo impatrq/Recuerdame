@@ -1,68 +1,46 @@
 
+
+/* --- Estilos Generales --- */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f2f2f7; 
-    margin: 0;
-    padding: 0;
+    background-image: url("images/textura.jpg");
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2rem;
     min-height: 100vh;
-    color: #1c1c1e; 
-    max-width: 500px;
+    color: #023e8a; /* Color de texto principal */
 }
 
-/* Ocultar todas las pantallas por defecto, se maneja con JS */
-#menu-principal,
-#pantalla-personas,
-#pantalla-preguntas,
-#pantalla-estadisticas,
-#pantalla-configuracion {
-    width: 100%;
-    max-width: 500px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    padding: 20px;
-    box-sizing: border-box; 
-    min-height: 100vh;
-    text-align: center;
+#menu-principal h2 {
+  font-size: 24px;
+  color: #023e8a;
+  text-align: left;
+  padding-left: 20px;
 }
 
-/* Logos fijos en las pantallas */
-.logo-fijo {
-    width: 120px; /* Tamaño más pequeño para los logos secundarios */
-    margin-top: 10px; /* Pequeño margen superior */
+#menu-principal p {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.enlace {
+  color: #023e8a; /* azul Recuérdame */
+  text-decoration: none;
+  font-size: small;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-bottom: 2rem;
+  text-decoration: underline;
 }
 
 .Registro {
     font-size: 28px;
-    color: #023e8a;
-    margin-bottom: 30px;
-}
+    font-weight: bold;
+    color: #023e8a; /* Tu color de marca */
 
-/* Contenedores de contenido (usados en varias pantallas) */
-.contenedor {
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* --- Menú Principal --- */
-#menu-principal h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: #023e8a;
-    text-align: left;
-    padding-left: 20px;
-    font-family: 'Montserrat', sans-serif;
-    
 }
 
 /* Estilo general para todos los botones de acción */
@@ -77,8 +55,24 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     width: 100%; /* Ocupar todo el ancho disponible en el contenedor */
     max-width: 300px;
-    margin-bottom: 15px; /* Espacio entre botones */
+    margin-top: 15px; /* Espacio entre botones */
 }
+
+.button2 {
+    background-color: #023e8a;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%; /* Ocupar todo el ancho disponible en el contenedor */
+    max-width: 300px;
+    margin-top: 15px; /* Espacio entre botones */
+}
+
+
 
 .button:hover {
     background-color: #023e8a;
@@ -86,21 +80,13 @@ body {
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-/* Estilo para el botón de iniciar juego en el menú principal */
-#btn-iniciar-juego {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 16px 28px;
-    font-size: 20px;
-}
-
 /* --- Pantalla de Personas --- */
 #pantalla-personas form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* Espacio entre los campos del formulario */
     width: 100%;
-    margin-bottom: 30px;
+  
 }
 
 #pantalla-personas input[type="text"],
@@ -115,21 +101,6 @@ body {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.boton-guardar {
-    background-color: #18b300; /* Un gris oscuro para botones secundarios */
-    color: white;
-    padding: 12px 40px;
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    max-width: 70%;
-    gap: 8px;
-}
-
 #pantalla-personas input[type="text"]:focus,
 #respuesta-texto-input:focus {
     border-color: #023e8a;
@@ -141,13 +112,15 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+}
+
+.contenedor-boton-guardar {
+    display: flex;
+    justify-content: center;
 }
 
 .button1 { /* Estilo para el botón "Subir Foto" */
-    background-color: #023e8a; /* Un gris oscuro para botones secundarios */
+    background-color: #636366; /* Un gris oscuro para botones secundarios */
     color: white;
     padding: 12px 20px;
     border: none;
@@ -172,13 +145,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Espacio entre cada tarjeta de persona */
-}
-
-#lista-personas > svg { /* Icono de usuarios */
-    margin-bottom: 20px;
-    color: #023e8a;
-    width: 40px;
-    height: 40px;
 }
 
 .persona {
@@ -210,7 +176,7 @@ body {
 
 .persona p {
     font-size: 15px;
-    color: #023e8a;
+    color: #636366;
     margin: 0;
     flex-grow: 1; /* Para que ocupe el espacio restante */
 }
@@ -247,7 +213,7 @@ body {
     font-size: 22px;
     font-weight: 600;
     text-align: center;
-    color: #1c1c1e;
+    color: #202061;
     margin-bottom: 15px;
 }
 
@@ -256,7 +222,6 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 15px; /* Espacio entre los botones de opción */
-    align-items: center;
 }
 
 #opciones-respuesta .button { /* Estilo para los botones de opción (reutiliza .button) */
@@ -266,6 +231,7 @@ body {
     padding: 16px;
     font-size: 17px;
     width: 100%; /* Asegura que los botones ocupen el ancho completo de su contenedor */
+    max-width: none; /* Deshabilita el max-width del .button general */
     margin: 0; /* Remueve el margen superior del .button general */
 }
 
@@ -274,24 +240,28 @@ body {
 }
 
 #opciones-respuesta .button.selected { /* Estilo para la opción seleccionada */
-    background: #023e8a;
+    background: #10c000;
     color: #ffffff;
-    border-color: #023e8a;
-    box-shadow: 0 2px 6px rgba(12,145,190,0.3);
- 
+    border-color: #187000;
+    box-shadow: 0 2px 6px rgba(11, 96, 1, 0.3);
 }
 
 #btn-enviar-respuesta, #btn-siguiente-pregunta {
+    width: 100%;
     max-width: 300px; /* Para que no sean demasiado anchos */
     margin-top: 20px;
-    background: #023e8a;
+    background-color: #023e8a;
     color: white;
-    border: 1px solid #d1d1d6;
-    padding: 16px;
-    font-size: 17px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     width: 100%;
-    margin: 0;
-    border-radius: inherit;
+    max-width: 500px;
+    align-items: center;
+    margin-top: 15px;
 }
 
 #mensaje-respuesta {
@@ -403,10 +373,51 @@ body {
     height: 24px;
 }
 
-.nav-logo-icon {
-    width: 28px; /* Ajusta el tamaño según sea necesario */
+.preview-foto {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #023e8a;
+    align-self: center;
+}
+
+
+.espaciador-footer {
+    height: 80px; /* Igual o un poco más que el alto del footer */
+    width: 100%;
+}
+
+.seccion-registro {
+    width: 100%;
+}
+
+.titulo-registro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+#btn-toggle-form {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    color: #023e8a;
+}
+
+#btn-toggle-form i {
+    width: 28px;
     height: 28px;
-    object-fit: contain; /* Asegura que la imagen se vea completa */
-    margin-bottom: 2px; /* Pequeño ajuste para que no se pegue al texto si lo hubiera */
-    vertical-align: middle; /* Alineación vertical */
+}
+
+.texto-ayuda {
+    font-size: 14px;
+    color: #636366;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
