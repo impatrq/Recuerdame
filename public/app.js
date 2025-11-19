@@ -513,3 +513,4 @@ function mostrarFichaPaciente() {
         document.getElementById("ficha-estado").textContent = datos.estado;
     }
 }
+

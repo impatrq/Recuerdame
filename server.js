@@ -7,7 +7,7 @@ const multer = require("multer");
 const app = express();
 const PORT = 5000;
 
-mongoose.connect("mongodb+srv://recuerdamecpf:recuerdame@recuerdamecluster.yitpqed.mongodb.net/recuerdame?retryWrites=true&w=majority&appName=RecuerdameCluster", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://recuerdamecpf:recuerdame123@recuerdamecluster.yitpqed.mongodb.net/recuerdame?retryWrites=true&w=majority&appName=RecuerdameCluster", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("✅ Conectado a MongoDB Atlas")) // <-- ¡Asegurate que esté esta línea!
     .catch(error => console.error("❌ Error al conectar con MongoDB Atlas:", error));
 
@@ -239,4 +239,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`🔥 Servidor corriendo en http://localhost:${PORT}`);
 });
-
