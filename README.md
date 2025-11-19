@@ -53,24 +53,24 @@ Frontend / WebApp
 
 1. Clonar el repositorio
 
-git clone https://github.com/tuusuario/Recuerdame.git
-cd Recuerdame
+	git clone https://github.com/tuusuario/Recuerdame.git
+	cd Recuerdame
 
 2. Instalar dependencias de Python
 
-pip install face_recognition pymongo pillow numpy
+	pip install face_recognition pymongo pillow numpy
 
 3. Instalar rpicam-apps
 
-sudo apt install rpicam-apps
+	sudo apt install rpicam-apps
 
 4. Instalar espeak
 
-sudo apt install espeak
+	sudo apt install espeak
 
 5. Configurar tu string de MongoDB en el archivo Python
 
-MONGODB_URI = "mongodb+srv://..."
+	MONGODB_URI = "mongodb+srv://..."
 
 
 ⸻
@@ -87,15 +87,15 @@ MONGODB_URI = "mongodb+srv://..."
 
 4. Obtener la IP local
 
-hostname -I
+	hostname -I
 
 5. En el navegador (misma red), entrar a la WebApp
 
-http://IP:5000
+	http://IP:5000
 
 Ejemplo:
 
-192.168.0.15:5000
+	192.168.0.15:5000
 
 6. Registrar personas
 
