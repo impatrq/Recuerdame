@@ -135,14 +135,14 @@ Incluye también una ficha rápida del paciente en la pantalla principal.
 
 🔧 Arquitectura General
 
-[ Cámara Raspberry ] -> captura -> [ Procesador Pi Zero 2 ]
-        |                                     |
-        v                                     v
-[ face_recognition ] -> encodings -> [ Comparación con DB ]
-        |                                     |
-        v                                     v
-[ Identificación ] -----------------> [ Síntesis de voz ESpeak ]
-
+	[ Cámara Raspberry ] -> captura -> [ Procesador Pi Zero 2 ]
+	        |                                     |
+	        v                                     v
+	[ face_recognition ] -> encodings -> [ Comparación con DB ]
+	        |                                     |
+	        v                                     v
+	[ Identificación ] -----------------> [ Síntesis de voz ESpeak ]
+	
 ⸻
 
 🤝 Agradecimientos / Sponsors
